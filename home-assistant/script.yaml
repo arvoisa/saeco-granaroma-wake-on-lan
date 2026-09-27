@@ -1,0 +1,17 @@
+# Add to scripts.yaml (or paste into a new script in YAML mode).
+# Replace the MAC with your machine's. If the machine sometimes doesn't
+# wake (unreliable Wi-Fi), raise count to 2 or 3.
+coffee_machine_on:
+  alias: Coffee machine on
+  icon: mdi:coffee-maker
+  description: Wakes the Saeco GranAroma Deluxe from standby with Wake-on-LAN.
+  mode: single
+  sequence:
+    - repeat:
+        count: 1
+        sequence:
+          - action: wake_on_lan.send_magic_packet
+            data:
+              mac: "34:6f:24:xx:xx:xx"
+          - delay:
+              seconds: 2
